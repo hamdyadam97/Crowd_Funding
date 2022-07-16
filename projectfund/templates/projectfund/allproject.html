@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--{%for pro in allprojects%}-->
+<!--<p>{{pro.title}}</p>-->
+<!--{%endfor%}-->
+{%for similar in sameproject%}
+<p>{{similar.creator}}</p>
+<p>{{similar.title}}</p>
+<p>{{similar.details}}</p>
+<p>{{similar.category}}</p>
+<p>{{similar.total_target}}</p>
+<p>{{similar.start_date}}</p>
+<p>{{similar.end_date}}</p>
+<p>{{similar.id}}</p>
+<!--<img src="" width="25%">-->
+{%for pic in images%}
+<!--{{images}}-->
+<p>{{ pic.project_name}}</p>
+
+{%endfor%}
+
+{%endfor%}
+
+
+
+
+
+</body>
+</html>

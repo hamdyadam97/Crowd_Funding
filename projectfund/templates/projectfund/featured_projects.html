@@ -1,0 +1,33 @@
+{% load static %}
+<section class="section courses" data-section="section4">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2 class="main-title">featured projects</h2>
+          </div>
+        </div>
+        <div class="owl-carousel owl-theme">
+          {% for project in l_projects %}
+          <div class="item">
+            {% for img in image %}
+            {% if img.project_name == project %}
+            <img src="{{ img.image.url }}" alt="Course #1">
+            {% endif %}
+            {% endfor %}
+            <div class="down-content">
+              <h4>{{project.title }}</h4>
+              <p>{{project.details}}</p>
+              <div class="author-image">
+                <img src="{%static 'assets/images/author-01.png'%}" alt="Author 1">
+              </div>
+              <div class="text-button-pay">
+                <a href="#">read more <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+          {% endfor%}
+        </div>
+      </div>
+    </div>
+  </section>

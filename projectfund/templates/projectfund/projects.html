@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for project in projects %}
+{{ project.title }}
+{{project.start_date}}
+{{project.category}}
+<a href="{% url 'projectfund:detail_project' project.id %}">sadddddddddddd</a>
+{% endfor%}
+{% endblock %}

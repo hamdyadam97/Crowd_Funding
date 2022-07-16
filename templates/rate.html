@@ -1,0 +1,20 @@
+{% load crispy_forms_tags %}
+...
+<form method="post" style="margin-top: 1.3em;">
+          {{ rate_form | crispy }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+ </form>
+
+
+<!--{% block content %}-->
+
+<!--    <div>-->
+
+<!--<form action="" method = "post">-->
+<!--    {{ form }}-->
+<!--    <input type = "submit" value = "Submit">-->
+<!--</form>-->
+<!--    </div>-->
+
+<!--  {% endblock %}-->

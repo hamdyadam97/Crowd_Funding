@@ -1,0 +1,4 @@
+{% for pro in l_projects %}
+{%
+  <li><a href="{% url 'projectfund:project_category' pro %}">{{pro}}</a></li>
+ {% endfor %}

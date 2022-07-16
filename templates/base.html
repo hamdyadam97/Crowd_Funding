@@ -1,0 +1,249 @@
+{%load static%}
+{% load projectfund_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>fund.exe</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{%static 'assets/css/all.min.css'%}">
+    <link href="{%static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{%static 'assets/css/fontawesome.css'%}">
+    <link rel="stylesheet" href="{%static 'assets/css/templatemo-grad-school.css'%}">
+    <link rel="stylesheet" href="{%static 'assets/css/owl.css'%}">
+    <link rel="stylesheet" href="{%static 'assets/css/lightbox.css'%}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+  </head>
+
+<body>
+
+  <!--header-->
+  <header class="main-header clearfix" role="header">
+    <div class="logo">
+      <a href="#"><em>Fund</em>.exe</a>
+    </div>
+    <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+    <nav id="menu" class="main-nav" role="navigation">
+      <ul class="main-menu">
+        <li><a href="#section1">Home</a></li>
+        <li class="has-submenu"><a href="#section2">About Us</a>
+          <ul class="sub-menu">
+            <li><a href="#section2">Who we are?</a></li>
+            <li><a href="#section3">What we do?</a></li>
+            <li><a href="#section3">How it works?</a></li>
+            <li><a href="https://templatemo.com/about" rel="sponsored" class="external">External URL</a></li>
+          </ul>
+        </li>
+        <li class="has-submenu"><a href="#section2">Categories</a>
+           <ul class="sub-menu">
+             {% category_projects %}
+             </ul>
+        </li>
+        <li>
+          <form method="get" action="{% url 'projectfund:search' %}">
+            <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search" aria-label="Search" name="search">
+            <input type="submit" class="form-control my-0 py-1 amber-border"/>
+          </form>
+          </li>
+        <li><a href="#">Login</a></li>
+        <i class="bi bi-person-fill"></i>
+      </ul>
+
+    </nav>
+
+  </header>
+
+  <!-- ***** Main Banner Area Start ***** -->
+  <section class="section main-banner" id="top" data-section="section1">
+      <video autoplay muted loop id="bg-video">
+          <source src="{%static 'assets/images/course-video.mp4'%}" type="video/mp4" />
+      </video>
+
+      <div class="video-overlay header-text">
+          <div class="caption">
+              <h6>Your Home For Help</h6>
+              <h2><em>Make Your Dreams </em>Come True</h2>
+              <div class="main-button">
+                  <div class="scroll-to-section"><a href="#section2"> Start a Fund.exe</a></div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- ***** Main Banner Area End ***** -->
+
+
+  <section class="features">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-12">
+          <div class="features-post">
+            <div class="features-content">
+              <div class="content-show">
+                <h4><i class="bi bi-stars"></i>Top Rated</h4>
+              </div>
+              <div class="content-hide">
+                <p>Discover the most famous financing projects that have the support of people and rated among the best projects on the site</p>
+                <p class="hidden-sm">Discover the most famous financing projects that have the support of people and rated among the best projects on the site</p>
+                <div class="scroll-to-section"><a href="#">Show More </a></div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-12">
+          <div class="features-post second-features">
+            <div class="features-content">
+              <div class="content-show">
+                <h4><i class="bi bi-calendar-check-fill"></i>Latest Projects</h4>
+              </div>
+              <div class="content-hide">
+                <p>Discover the latest financing projects and hurry up to donate and contribute to the project you want</p>
+                <p class="hidden-sm">Discover the latest financing projects and hurry up to donate .</p>
+                <div class="scroll-to-section"><a href="#">Details</a></div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-12">
+          <div class="features-post third-features">
+            <div class="features-content">
+              <div class="content-show">
+                <h4><i class="bi bi-award"></i>Featured Projects</h4>
+              </div>
+              <div class="content-hide">
+                <p>Funding helps you find benefits for your money by financing projects for distinguished people. Here is a list of the most recommended projects specifically for you.</p>
+                <p class="hidden-sm">Funding helps you find benefits for your money by financing projects for distinguished people. Here is a list of the most recommended projects specifically for you.</p>
+                <div class="scroll-to-section"><a href="#">Show More</a></div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% block content %}
+
+
+  {% endblock %}
+      <!-- Start Footer -->
+      <div class="footer">
+        <div class="container">
+          <div class="box">
+            <h3>Fund.exe</h3>
+            <ul class="social">
+              <li>
+                <a href="#" class="facebook">
+                  <i class="bi bi-facebook"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="twitter">
+                  <i class="bi bi-twitter"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="youtube">
+                  <i class="bi bi-youtube"></i>
+                </a>
+              </li>
+            </ul>
+           <h4>
+              Our mission is to help bring creative projects to life.
+            </h4>
+          </div>
+          <div class="box">
+            <ul class="links">
+              <li><a href="#" style="font-weight: bold ;">FUNDRAISE FOR</a></li>
+              <li><a href="#">Medical</a></li>
+              <li><a href="#">Emergency</a></li>
+              <li><a href="#">Memorial</a></li>
+              <li><a href="#">Education</a></li>
+              <li><a href="#">Coronavirus fundraising</a></li>
+            </ul>
+          </div>
+          <div class="box">
+            <ul class="links">
+              <li><a href="#"style="font-weight: bold ;">LEARN MORE</a></li>
+              <li><a href="#">How Fund.exe works</a></li>
+              <li><a href="#">Why Fund.exe</a></li>
+              <li><a href="#">Common questions</a></li>
+              <li><a href="#">Success stories</a></li>
+              <li><a href="#">Charity fundraising</a></li>
+            </ul>
+          </div>
+          </div>
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="{%static 'vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{%static 'vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="{%static 'assets/js/isotope.min.js'%}"></script>
+    <script src="{%static 'assets/js/owl-carousel.js'%}"></script>
+    <script src="{%static 'assets/js/lightbox.js'%}"></script>
+    <script src="{%static 'assets/js/tabs.js'%}"></script>
+    <script src="{%static 'assets/js/video.js'%}"></script>
+    <script src="{%static 'assets/js/slick-slider.js'%}"></script>
+    <script src="{%static 'assets/js/custom.js'%}"></script>
+    <script>
+        //according to loftblog tut
+        $('.nav li:first').addClass('active');
+
+        var showSection = function showSection(section, isAnimate) {
+          var
+          direction = section.replace(/#/, ''),
+          reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+          reqSectionPos = reqSection.offset().top - 0;
+
+          if (isAnimate) {
+            $('body, html').animate({
+              scrollTop: reqSectionPos },
+            800);
+          } else {
+            $('body, html').scrollTop(reqSectionPos);
+          }
+
+        };
+
+        var checkSection = function checkSection() {
+          $('.section').each(function () {
+            var
+            $this = $(this),
+            topEdge = $this.offset().top - 80,
+            bottomEdge = topEdge + $this.height(),
+            wScroll = $(window).scrollTop();
+            if (topEdge < wScroll && bottomEdge > wScroll) {
+              var
+              currentId = $this.data('section'),
+              reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+              reqLink.closest('li').addClass('active').
+              siblings().removeClass('active');
+            }
+          });
+        };
+
+        $('.main-menu, .scroll-to-section').on('click', 'a', function (e) {
+          if($(e.target).hasClass('external')) {
+            return;
+          }
+          e.preventDefault();
+          $('#menu').removeClass('active');
+          showSection($(this).attr('href'), true);
+        });
+
+        $(window).scroll(function () {
+          checkSection();
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+</html>

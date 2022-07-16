@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>{{ project.title }}</h1>
+<h1>{{ project.details }}</h1>
+<h1>{{project.start_date}}</h1>
+<h1>{{project.end_date}}</h1>
+<h1>{{project.category}}</h1>
+<h1>{{project.total_target}}</h1>
+<h1>{{project.donations}}</h1>
+<h1>{{project.creator}}</h1>
+{% for ta in tag %}
+{{ ta.tag}}
+{% endfor %}
+{% for img in image %}
+<img src="{{img.image.url}}"style="width:350px;padding:50px">
+{% endfor %}
+<form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            {{ form | crispy }}
+    <button type="submit" > addDonations </button>
+</form>
+{{msg}}
+{% endblock %}

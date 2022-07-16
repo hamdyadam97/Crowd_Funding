@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<p>{{images.firstname}}</p>-->
+<!--<p>{{images.lastname}}</p>-->
+<!--<p>{{images.email}}</p>-->
+<!--<p>{{images.password}}</p>-->
+<!--<p>{{images.mobile_phone}}</p>-->
+<!--<p>{{images.image}}</p>-->
+<!--<img src="/media/{{ images.image }}" width="50%">-->
+{%for pic in images%}
+<img src="/media/{{ pic.image }}" width="25%">
+{%endfor%}
+
+
+</body>
+</html>
