@@ -1,6 +1,8 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login as authlogin ,logout  as authlogout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib import messages
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
@@ -10,6 +12,9 @@ from django.contrib.sites.shortcuts import get_current_site
 import random
 from django.core.mail import send_mail
 from django.conf import settings
+
+
+
 
 
 def signup(request):
@@ -62,15 +67,40 @@ def verify(request,token):
 
 
 def signin(request):
-    if (request.method=='GET'):
-        return render(request,'account/login.html')
+    if (request.session.get('email') is None):
+
+            if (request.method=='GET'):
+
+                return render(request,'account/login.html')
+            else:
+
+                User=Account.objects.filter(email=request.POST['email'],password=request.POST['password'])
+                username= User[0].firstname + " " + User[0].lastname
+
+
+                authuser = authenticate(username=username, password=request.POST['password'])
+
+
+                if (len(User)>0 and User is not None):
+                    print('if31')
+                    request.session['email'] = User[0].email
+                    authlogin(request, authuser)
+                    return render(request ,'account/success.html')
+                context={}
+                context['Erorr']='invalid Email or Password'
+                return render(request, 'account/success.html',context)
     else:
-        User=Account.objects.filter(email=request.POST['email'],password=request.POST['password'])
-        if (len(User)>0):
-            return render(request,'account/login.html')
-        context={}
-        context['Erorr']='invalid Email or Password'
-        return render(request, 'account/login.html',context)
+      print('else1')
+      return render(request, 'account/signup.html')
+
+def logout(request):
+    print('before logout')
+    if (request.session.get('email') is not None and request.user.is_authenticated):
+        print('if logout')
+        request.session.clear()
+        authlogout(request)
+    return render(request, 'account/success.html')
+
 def deletepage(request,id):
     deleteuser= Account.objects.get(id=id)
     return render(request, 'account/DeleteAccount.html',{'deleteuser':deleteuser})
