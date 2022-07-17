@@ -12,6 +12,7 @@ from django.contrib.sites.shortcuts import get_current_site
 import random
 from django.core.mail import send_mail
 from django.conf import settings
+from projectfund.models import Project
 
 
 
@@ -152,3 +153,9 @@ def profile(request, id):
 
 
 
+def view_projects(request,id):
+    context = {}
+    views =Account.objects.get(id=id)
+    context['account'] = Project.objects.filter(creator_id=views.id)
+    print(context)
+    return render(request, 'account/viewproject.html', context)

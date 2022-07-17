@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Profile Page{% endblock title %}
+{% block content %}
+    <div class="row my-3 p-3">
+           {% for i in account %}
+        <h1>This is the profile page for {{i.title}}</h1>
+        <h1>This is the profile page for {{i.details}}</h1>
+        <a href="{% url 'projectfund:project_detail' i.id %}">Add comment</a>
+          {% endfor %}
+	</div>
+
+{% endblock content %}
