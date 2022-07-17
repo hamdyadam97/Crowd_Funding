@@ -5,6 +5,8 @@
         <p>This is the profile page for {{account.firstname}}</p>
         <p>This is the profile page for {{account.lastname}}</p>
         <p>This is the profile page for {{account.email}}</p>
+	<a href="{%url 'account:view_projects' account.id %}" >Go To Projects </a>
+
 	</div>
 
 {% endblock content %}
