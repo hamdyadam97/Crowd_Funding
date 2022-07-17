@@ -11,7 +11,8 @@ urlpatterns = [
     path('updateuser/<id>', updateuser, name='updateuser'),
     path('addprofile/<id>', addprofile, name='addprofile'),
     path('verify/<str:token>',verify,name='verify'),
+    path('profile/<id>', profile, name='users-profile'),
     path('home/<int:id>', deletepage,name='deletepage'),
     path('delete/<int:id>', deleteAccount),
-    path('profile/<id>', profile, name='users-profile'),
+
 ]

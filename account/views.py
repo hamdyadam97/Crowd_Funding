@@ -82,15 +82,15 @@ def signin(request):
 
 
                 if (len(User)>0 and User is not None):
-                    print('if31')
+
                     request.session['email'] = User[0].email
                     authlogin(request, authuser)
                     return render(request ,'account/success.html')
                 context={}
                 context['Erorr']='invalid Email or Password'
-                return render(request, 'account/success.html',context)
+                return render(request, 'account/login.html',context)
     else:
-      print('else1')
+
       return render(request, 'account/signup.html')
 
 def logout(request):
