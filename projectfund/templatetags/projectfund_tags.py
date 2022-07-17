@@ -1,4 +1,3 @@
-
 from django import template
 from projectfund.models import Project,ProjectImage,Rate
 
