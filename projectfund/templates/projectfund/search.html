@@ -45,7 +45,7 @@
           {% for project in tag_projects %}
           <div class="item">
             {% for img in image2 %}
-            {% if img.project_name == project %}
+            {% if img.project_name == project  %}
             <img src="{{ img.image.url }}" alt="Course #1">
             {% endif %}
             {% endfor %}

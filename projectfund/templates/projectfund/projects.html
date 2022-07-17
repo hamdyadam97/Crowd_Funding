@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 {% for project in projects %}
-{{ project.title }}
-{{project.start_date}}
-{{project.category}}
-<a href="{% url 'projectfund:detail_project' project.id %}">sadddddddddddd</a>
+<div class="container">
+    <div class="">
+        <h1>{{ project.title }}</h1>
+        <p> the start daate for this project <span>{{project.start_date}}</span> and the end is  <span>{{project.end_date}}</span> </p>
+        <p><a href="#"> {{project.category}} </a></p>
+        <a href="{% url 'projectfund:detail_project' project.id %}">for more details projects and denote</a>
+    </div>
+
+</div>
 {% endfor%}
 {% endblock %}

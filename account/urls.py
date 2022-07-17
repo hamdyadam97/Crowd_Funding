@@ -14,7 +14,6 @@ urlpatterns = [
     path('home/<int:id>', deletepage,name='deletepage'),
     path('delete/<int:id>', deleteAccount),
     path('profile/<id>', profile, name='users_profile'),
-    path('profile/<id>', profile, name='users-profile'),
     path('viewprojects/<id>', view_projects, name='view_projects'),
 
 ]

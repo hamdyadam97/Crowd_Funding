@@ -11,8 +11,8 @@ def last_projects():
     projects = Project.objects.all()[0:5]
     image = []
     for project in projects:
-        img = ProjectImage.objects.get(project_name=project)
-        image.append(img)
+        img = ProjectImage.objects.filter(project_name=project)
+        image.append(img[0])
     context = {
         'l_projects': projects,
         'image': image,
@@ -31,10 +31,10 @@ def the_highest_five_rated():
         img = Project.objects.get(id=project.ratee_id)
         projects.append(img)
     for project in projects:
-        img = ProjectImage.objects.get(project_name=project)
-        image.append(img)
-
-
+        img = ProjectImage.objects.filter(project_name_id=project.id)
+        for i in img:
+            image.append(i)
+            print(i.image)
     context = {
         'l_projects': projects,
         'image': image,
@@ -47,8 +47,8 @@ def featured_projects():
     projects = Project.objects.all().filter(is_admin=True).order_by('start_date')
     image = []
     for project in projects:
-        img = ProjectImage.objects.get(project_name=project)
-        image.append(img)
+        img = ProjectImage.objects.filter(project_name=project)
+        image.append(img[0])
 
 
     context = {

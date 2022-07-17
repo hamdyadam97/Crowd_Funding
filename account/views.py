@@ -87,7 +87,8 @@ def signin(request):
 
 def logout(request):
     print('before logout')
-    if (request.session.get('email') is not None and request.user.is_authenticated):
+    print(request.session.get('email'))
+    if request.user.is_authenticated:
         print('if logout')
         request.session.clear()
         authlogout(request)
@@ -134,7 +135,7 @@ def addprofile(request,id):
             return HttpResponse("profile is created")
     else:
         form = CreateProfile()
-    context = {'form': form}
+    context = {'form': form,}
     return render(request,'account/addprofile.html', context)
 
 def profile(request, id):
