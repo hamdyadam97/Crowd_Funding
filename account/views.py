@@ -85,6 +85,7 @@ def signin(request):
     else:
       return redirect('projectfund:home')
 
+
 def logout(request):
     print('before logout')
     print(request.session.get('email'))
@@ -102,8 +103,8 @@ def deleteAccount(request,id):
         deleteuser = Account.objects.get(id=id)
         print(deleteuser.firstname)
         deleteuser.delete()
-
-        return render(request,'fack/log-in.html')
+        return redirect('projectfund:home')
+        # return render(request,'fack/log-in.html')
 
 
 @login_required
