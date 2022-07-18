@@ -69,7 +69,7 @@ def verify(request,token):
 def signin(request):
     if (request.session.get('email') is None):
             if (request.method=='GET'):
-                return render(request,'account/login.html')
+                return render(request,'account/log-in.html')
             else:
                 User = Account.objects.filter(email=request.POST['email'],password=request.POST['password'])
                 if len(User)>0 and User is not None:

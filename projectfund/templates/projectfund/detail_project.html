@@ -19,6 +19,7 @@
         {% csrf_token %}
             {{ form | crispy }}
     <button type="submit" > addDonations </button>
+    <button type="submit" name="c-report_id" value="{{ project.id }}" class="btn btn-primary btn-sm"> report </button>
 </form>
 {{msg}}
 {% endblock %}

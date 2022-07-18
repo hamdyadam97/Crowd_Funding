@@ -4,4 +4,5 @@
           {{ comment_form | crispy }}
           {% csrf_token %}
           <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+    <button type="submit" name="report_id" value="{{ project.id }}" class="btn btn-primary btn-sm"> report </button>
  </form>
