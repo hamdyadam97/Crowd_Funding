@@ -1,59 +1,68 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="container">
-    <ul>
-        <span>title</span>
-        <li><h1>{{ project.title }}</h1></li>
-        <span>details</span>
-        <li><h5>{{ project.details }}</h5></li>
-        <span>start_date</span>
-        <li><h4>{{project.start_date}}</h4></li>
-        <span>end_date</span>
-        <li><h4>{{project.end_date}}</h4></li>
-        <span>category</span>
-        <li><h4>{{project.category}}</h4></li>
-        <span>total_target</span>
-        <li><h4>{{project.total_target}}</h4></li>
-        <span>donations</span>
-        <li><h4>{{project.donations}}</h4></li>
+{%load static%}
 
-</ul>
-    <a href="{% url 'projectfund:project_tag' project.id %}">search by mathch tag</a>
+
+ <link href="{%static 'vendorl/mdi-font/css/material-design-iconic-font.min.css'%}" rel="stylesheet" media="all">
+    <link href="{%static 'vendorl/font-awesome-4.7/css/font-awesome.min.css'%}" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="{%static 'vendorl/select2/select2.min.css'%}" rel="stylesheet" media="all">
+    <link href="{%static 'vendorl/datepicker/daterangepicker.css'%}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{%static 'css/main.css'%}" rel="stylesheet" media="all">
+
+<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+          <div class="container">
+              <h3 style="color :#f5a425 ">Title</h3>
+             <h5 style="  padding-left: 50px;"> {{ project.title }}</h5>
+        <h3 style="color :#f5a425 ">Details</h3>
+        <h5 style="  padding-left: 50px;">{{ project.details }}</h5>
+        <h3 style="color :#f5a425 ">Start_date</h3>
+        <h5 style="  padding-left: 50px;">{{project.start_date}}</h5>
+        <h3 style="color :#f5a425 ">End_date</h3>
+        <h5 style="  padding-left: 50px;">{{project.end_date}}</h5>
+        <h3 style="color :#f5a425 ">Category</h3>
+        <h5 style="  padding-left: 50px;">{{project.category}}</h5>
+        <h3 style="color :#f5a425 ">Total_target</h3>
+        <h5 style="  padding-left: 50px;">{{project.total_target}}</h5>
+        <h3 style="color :#f5a425 ">Donations</h3>
+        <h5 style="  padding-left: 50px;">{{project.donations}}<br></h5>
+
         {% for img in image %}
-        <img src="{{img.image.url}}"style="width:350px;padding:50px">
+        <img src="{{img.image.url}}" style="width:350px;padding:50px"><br>
         {% endfor %}
-    <p>the rete for this project is <h3>{{avrg_rate}}</h3></p>
+              <a href="{% url 'projectfund:project_tag' project.id %}" style="color :blue ; font-size:20px">Search by match tag?</a><BR>
+
+              <h5>The rate for this project is {{avrg_rate}}</h5>
         <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                     {{ form | crispy }}
-            <button type="submit" > addDonations </button>
+            <button type="submit" class ='btn btn-primary  btn-lg'> AddDonations </button>
         </form>
         {{msg}}
     {% for comm in comment %}
     <h5>{{comm.body}}</h5>
     {% endfor %}
-    <a href="{% url 'projectfund:addcomment' project.id %}"> comment for projects</a>
-    <a href="{% url 'projectfund:rateproject' project.id %}"> rate projects</a>
-    <a href="{% url 'projectfund:cancel' project.id %}"> cansel projects</a>
-    <a href="{% url 'projectfund:cal_denitions' project.id  %}"> cal_denitions projects</a>
+    <a href="{% url 'projectfund:project_detail' project.id %}"  style="color :blue ; font-size:30px"> comment for projects</a><br>
+    <a href="{% url 'projectfund:rateproject' project.id %}"style="color :blue ; font-size:30px"> rate projects</a><br>
+    <a href="{% url 'projectfund:cancel' project.id %}"style="color :blue ; font-size:30px"> cancel projects</a><br>
+    <a href="{% url 'projectfund:cal_denitions' project.id  %}"style="color :blue ; font-size:30px"> cal_denitions projects</a>
 </div>
 {% if messages %}
 {% for ms in messages %}
 <h1>{{ms }}</h1>
 {% endfor %}
-<<<<<<< HEAD
-{% for img in image %}
-<img src="{{img.image.url}}"style="width:350px;padding:50px">
-{% endfor %}
-<form action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-            {{ form | crispy }}
-    <button type="submit" > addDonations </button>
-    <button type="submit" name="c-report_id" value="{{ project.id }}" class="btn btn-primary btn-sm"> report </button>
-</form>
-{{msg}}
-=======
+
+
 {% endif %}
->>>>>>> 8950fb4b33c0b360a0389888c52a05b7369d91a2
+
+
 {% endblock %}
