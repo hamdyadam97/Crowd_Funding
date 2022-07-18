@@ -31,10 +31,13 @@ def the_highest_five_rated():
         img = Project.objects.get(id=project.ratee_id)
         projects.append(img)
     for project in projects:
-        img = ProjectImage.objects.filter(project_name_id=project.id)
-        for i in img:
-            image.append(i)
-            print(i.image)
+        img = ProjectImage.objects.filter(project_name_id=project.id)[0:1]
+        if img[0] in image:
+            continue
+        image.append(img[0])
+        # for i in img:
+        #     image.append(i)
+        #     print(i.image)
     context = {
         'l_projects': projects,
         'image': image,

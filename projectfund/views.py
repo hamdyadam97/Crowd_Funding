@@ -270,8 +270,11 @@ def search(request):
             img = Project.objects.get(id=tag.project_name_tag_id)
             arr.append(img)
         for project in arr:
-            img = ProjectImage.objects.filter(project_name=project)
+            img = ProjectImage.objects.filter(project_name=project)[0:1]
+            if img[0] in image2 :
+                continue
             image2.append(img[0])
+            print(img)
         context = {
             'l_projects':projects,
             'tag_projects':arr,
