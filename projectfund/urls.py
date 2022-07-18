@@ -12,7 +12,7 @@ urlpatterns = [
     # path('projecttag/<tag>', project_tag, name='project_tag'),
     path('project/<int:project_name_id>', project),
     path('allproject/', allproject),
-    path('allproject/<str:category>', sameproject),
+    path('allproject/<str:category>', sameproject,name='allproject'),
     path('comment/<id>',project_detail),
     path('rate/<id>',add_rate),
     path('avrg',avrg),

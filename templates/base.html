@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="{%static 'assets/css/all.min.css'%}">
     <link href="{%static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
 
+
+
+
+
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="{%static 'assets/css/fontawesome.css'%}">
     <link rel="stylesheet" href="{%static 'assets/css/templatemo-grad-school.css'%}">
@@ -31,9 +35,12 @@
       <a href="#"><em>Fund</em>.exe</a>
     </div>
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
-    <nav id="menu" class="main-nav" role="navigation">
+      <nav id="menu" class="main-nav" role="navigation">
       <ul class="main-menu">
+          {% block viewprojects %}
         <li><a href="#section1">Home</a></li>
+          {% endblock viewprojects %}
+          {% block forprofile %}
         <li class="has-submenu"><a href="#section2">About Us</a>
           <ul class="sub-menu">
             <li><a href="#section2">Who we are?</a></li>
@@ -42,9 +49,16 @@
             <li><a href="https://templatemo.com/about" rel="sponsored" class="external">External URL</a></li>
           </ul>
         </li>
+          {% endblock forprofile %}
+
         <li class="has-submenu"><a href="#section2">Categories</a>
            <ul class="sub-menu">
-             {% category_projects %}
+               <li><a href="/projects/allproject/hospital">Hospital</a></li>
+            <li><a href="/projects/allproject/hayaat-karima">Hayaa Karima</a></li>
+            <li><a href="/projects/allproject/Michael">Michael</a></li>
+            <li><a href="/projects/allproject/education">Education</a></li>
+            <li><a href="/projects/allproject/Corona">Corona</a></li>
+
              </ul>
         </li>
         <li>
@@ -53,11 +67,19 @@
             <input type="submit" class="form-control my-0 py-1 amber-border"/>
           </form>
           </li>
-        <li><a href="#">{%block name%}login{%endblock%}</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="#">{{request.user}}</a></li>
+        <li><a href="{% url 'account:logout' %}">logout</a></li>
+        {% else %}
+        <li><a href="#">login </a></li>
+        {% endif %}
         <i class="bi bi-person-fill"></i>
+     </ul>
       </ul>
 
+
     </nav>
+
 
   </header>
 
@@ -83,21 +105,9 @@
   <section class="features">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 col-12">
-          <div class="features-post">
-            <div class="features-content">
-              <div class="content-show">
-                <h4><i class="bi bi-stars"></i>Top Rated</h4>
-              </div>
-              <div class="content-hide">
-                <p>Discover the most famous financing projects that have the support of people and rated among the best projects on the site</p>
-                <p class="hidden-sm">Discover the most famous financing projects that have the support of people and rated among the best projects on the site</p>
-                <div class="scroll-to-section"><a href="#">Show More </a></div>
-            </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-12">
+
+        {% block hidden1 %}
+        <div class="col-lg-4 col-12" >
           <div class="features-post second-features">
             <div class="features-content">
               <div class="content-show">
@@ -111,28 +121,51 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-12">
+        {% endblock hidden1 %}
+        <div class="col-lg-4 col-10">
           <div class="features-post third-features">
             <div class="features-content">
               <div class="content-show">
+                {% block showdata %}
                 <h4><i class="bi bi-award"></i>Featured Projects</h4>
               </div>
               <div class="content-hide">
                 <p>Funding helps you find benefits for your money by financing projects for distinguished people. Here is a list of the most recommended projects specifically for you.</p>
                 <p class="hidden-sm">Funding helps you find benefits for your money by financing projects for distinguished people. Here is a list of the most recommended projects specifically for you.</p>
+
                 <div class="scroll-to-section"><a href="#">Show More</a></div>
+            </div>
+              {% endblock showdata %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+      {% block hidden2 %}
+               <div class="col-lg-4 col-12">
+          <div class="features-post">
+            <div class="features-content">
+              <div class="content-show">
+                <h4><i class="bi bi-stars"></i>Top Rated</h4>
+              </div>
+              <div class="content-hide">
+                <p>Discover the most famous financing projects that have the support of people and rated among the best projects on the site</p>
+                <p class="hidden-sm">Discover the most famous financing projects that have the support of people and rated among the best projects on the site</p>
+                <div class="scroll-to-section"><a href="#">Show More </a></div>
             </div>
             </div>
           </div>
         </div>
-      </div>
+      {% endblock hidden2 %}
     </div>
   </section>
 
 {% block content %}
 
+      {% endblock content %}
 
-  {% endblock %}
+
+
       <!-- Start Footer -->
       <div class="footer">
         <div class="container">
@@ -180,6 +213,7 @@
             </ul>
           </div>
           </div>
+      </div>
 
 
   <!-- Scripts -->

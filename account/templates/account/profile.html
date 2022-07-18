@@ -1,11 +1,59 @@
 {% extends 'base.html' %}
-{% block title %}Profile Page{% endblock title %}
-{% block title %}Profile Page{% endblock title %}
-{% block content %}
-    <div class="row my-3 p-3">
-        <p>This is the profile page for {{account.firstname}}</p>
-        <p>This is the profile page for {{account.lastname}}</p>
-        <p>This is the profile page for {{account.email}}</p>
-	</div>
 
-{% endblock content %}
+{% block title %}Profile Page{% endblock title %}
+
+{% block viewprojects %}
+
+ <li><a href="{%url 'account:view_projects' account.id %}">AllProject </a></li>
+{% endblock viewprojects %}
+{% block forprofile %}
+  <li class="has-submenu"><a href="#section2">For Profile</a>
+          <ul class="sub-menu">
+
+            <li><a href="{%url 'account:updateuser' account.id %}">Edit Profile</a></li>
+            <li><a href="{%url 'account:addprofile' account.id %}">Add profileInfo</a></li>
+            <li><a href="{%url 'account:deletepage' account.id %}">DELETE ACCOUNT</a></li>
+          </ul>
+        </li>
+{% endblock forprofile %}
+{% block category %}
+     <li class="has-submenu"><a href="#section2">Categories</a>
+          <ul class="sub-menu">
+
+            <li><a href="/projects/allproject/hospital">Hospital</a></li><br>
+            <li><a href="/projects/allproject/hayaat-karima">Hayaa Karima</a></li>
+            <li><a href="/projects/allproject/Michael">Michael</a></li>
+            <li><a href="/projects/allproject/education">Education</a></li>
+            <li><a href="/projects/allproject/Corona">Corona</a></li>
+
+          </ul>
+        </li>
+    {% endblock category %}
+
+
+
+
+
+{% block hidden1 %}
+ <div class="col-lg-4 col-12" style="overflow:hidden">
+ </div>
+{% endblock hidden1 %}
+{% block hidden2 %}
+ <div class="col-lg-4 col-12" style="overflow:hidden">
+ </div>
+{% endblock hidden2 %}
+
+
+{% block showdata %}
+    <div class="row my-3 p-3">
+        <h4><i class="bi bi-award"></i>WELCOM {{account.firstname}} {{account.lastname}}</h4>
+        <div class="content-hide">
+                <p>This is the profile page for {{account.firstname}} {{account.lastname}}</p>
+               <img src="/media/{{ account.image }}" width="40%" style="position-left:50%">
+                <p class="hidden-sm">This is the profile page for {{account.email}}</p><br>
+             <a href="{%url 'account:view_projects' account.id %}">Go To Projects</a>
+
+        </div>
+    </div>
+{% endblock showdata %}
+
