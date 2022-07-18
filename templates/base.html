@@ -67,11 +67,12 @@
             <input type="submit" class="form-control my-0 py-1 amber-border"/>
           </form>
           </li>
+
         {% if user.is_authenticated %}
-        <li><a href="#">{{request.user}}</a></li>
         <li><a href="{% url 'account:logout' %}">logout</a></li>
+        <li><a href="#">{{request.user}}</a></li>
         {% else %}
-        <li><a href="#">login </a></li>
+        <li><a href="{% url 'account:signin'%}">login </a></li>
         {% endif %}
         <i class="bi bi-person-fill"></i>
      </ul>

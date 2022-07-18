@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+<<<<<<< HEAD
 {% block title %}Profile Page{% endblock title %}
 {% block showdata %}
     <div class="row my-3 p-3">
@@ -17,3 +18,53 @@
 	</div>
 
 {% endblock showdata %}
+=======
+{% load crispy_forms_tags %}
+{%load static%}
+{% block content %}
+
+   <link href="{%static 'vendorl/mdi-font/css/material-design-iconic-font.min.css'%}" rel="stylesheet" media="all">
+    <link href="{%static 'vendorl/font-awesome-4.7/css/font-awesome.min.css'%}" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="{%static 'vendorl/select2/select2.min.css'%}" rel="stylesheet" media="all">
+    <link href="{%static 'vendorl/datepicker/daterangepicker.css'%}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{%static 'css/main.css'%}" rel="stylesheet" media="all">
+
+<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                 {% for i in account %}
+        <p>This is the {{i.title}} Project</p>
+        <p>This is the details :{{i.details}}</p>
+        <a href="{% url 'projectfund:project_detail' i.id %} " style="color: blue">Add comment to Project</a>
+          {% endfor %}
+
+        	</div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Jquery JS-->
+    <script src="{%static 'vendorl/jquery/jquery.min.js'%}"></script>
+    <!-- Vendor JS-->
+    <script src="{%static 'vendorl/select2/select2.min.js'%}"></script>
+    <script src="{%static 'vendorl/datepicker/moment.min.js'%}"></script>
+    <script src="{%static 'vendorl/datepicker/daterangepicker.js'%}"></script>
+
+    <!-- Main JS-->
+    <script src="{%static 'js/global.js'%}"></script>
+{% endblock %}
+{% block header %}
+{% endblock %}
+{%block name%}
+{{request.session.email}}
+{%endblock%}
+
+
+>>>>>>> 8c5e0a025c5f803638d7c096ac9602ca5aaf0be4

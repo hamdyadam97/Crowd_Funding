@@ -16,6 +16,9 @@ urlpatterns = [
     path('delete/<int:id>', deleteAccount),
     path('profile/<id>', profile, name='users_profile'),
 
+    path('viewprojects/<id>', view_projects, name='view_projects'),
+
+
     path('viewprojects/<int:id>', view_projects, name='view_projects'),
 ]
 
