@@ -11,10 +11,22 @@ urlpatterns = [
     path('updateuser/<id>', updateuser, name='updateuser'),
     path('addprofile/<id>', addprofile, name='addprofile'),
     path('verify/<str:token>',verify,name='verify'),
+    path('profile/<id>', profile, name='users-profile'),
     path('home/<int:id>', deletepage,name='deletepage'),
     path('delete/<int:id>', deleteAccount),
     path('profile/<id>', profile, name='users_profile'),
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8950fb4b33c0b360a0389888c52a05b7369d91a2
     path('viewprojects/<id>', view_projects, name='view_projects'),
 
+
+    path('viewprojects/<int:id>', view_projects, name='view_projects'),
 ]
+
+
+
+
+
 

@@ -1,5 +1,7 @@
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Project, ProjectTag, ProjectImage
 from .forms import FormDonate, CreateProject, ImageProjectFrom, ProjectTagForm
 from account.models import Account
@@ -21,10 +23,27 @@ def detail_project(request, id):
     project = Project.objects.get(id=id)
     tag = ProjectTag.objects.filter(project_name_tag=project)
     image = ProjectImage.objects.filter(project_name=project)
+    countt = Rate.objects.filter(ratee=project)
+    comment = Comment.objects.filter(proj=project)
+    account1 = User.objects.get(username=request.user)
+    account = Account.objects.get(email=account1.email)
+    count_rate = countt.count()
+    total = 0
+    for i in countt:
+        total = total + int(i.rating)
+    try:
+         avrg_rate = total / count_rate
+    except Exception:
+        avrg_rate = 'no rate here'
     datetoday = datetime.now().date()
     min = int(project.total_target) * 0.25
-    print(min)
     if request.method == "POST":
+        if project.start_date == datetoday and float(project.donations) < min:
+            print('cancel project')
+            project.delete()
+            return render(request, 'base.html')
+        else:
+            print(project.donations)
         if int(project.donations) < int(project.total_target):
              request.POST._mutable = True
              request.POST['donations'] = str(int(request.POST['donations']) + int(project.donations))
@@ -34,15 +53,7 @@ def detail_project(request, id):
                  form.save()
                  form = FormDonate()
                  msg = ''
-
-             if project.start_date == datetoday and float(project.donations) < min:
-                 print('cancel project')
-                 project.delete()
-                 return render(request,'base.html')
-             else:
-                 print(project.donations)
-
-
+                 Donation.objects.create(pro=project,acc=account,donation_account_project=request.POST['donations'])
         else:
             form = FormDonate()
             msg = "total_target is close"
@@ -55,12 +66,25 @@ def detail_project(request, id):
         'tag': tag,
         'image': image,
         'form': form,
-        'msg': msg
+        'msg': msg,
+        'avrg_rate':avrg_rate,
+        'comment':comment,
     }
     return render(request, 'projectfund/detail_project.html',context)
 
-
-
+@login_required()
+def cancleProject(request,id):
+    project = Project.objects.get(id=id)
+    account1 = User.objects.get(username=request.user)
+    account = Account.objects.get(email=account1.email)
+    min = int(project.total_target) * .25
+    print(min)
+    if project.creator_id == account.id and int(project.donations) < min:
+        project.delete()
+    else:
+        messages.error(request,'you can;t delete yhis')
+        return redirect('projectfund:detail_project', id=id)
+    return redirect('account:view_projects',id=account.id)
 
 def project_tag(request, id):
     arr = []
@@ -220,8 +244,8 @@ def project_category(request,category):
     image = []
     print(category)
     for project in projects:
-        img = ProjectImage.objects.get(project_name=project)
-        image.append(img)
+        img = ProjectImage.objects.filter(project_name=project)
+        image.append(img[0])
     context = {
         'l_projects': projects,
         'image': image,
@@ -238,7 +262,7 @@ def search(request):
         image2 = []
         projects = Project.objects.filter(title=the_title)
         for project in projects:
-            img = ProjectImage.objects.get(project_name=project)
+            img = ProjectImage.objects.filter(project_name=project)
             image.append(img)
         tag_projects = ProjectTag.objects.filter(tag=the_tag)
         arr = []
@@ -246,8 +270,11 @@ def search(request):
             img = Project.objects.get(id=tag.project_name_tag_id)
             arr.append(img)
         for project in arr:
-            img = ProjectImage.objects.get(project_name=project)
-            image2.append(img)
+            img = ProjectImage.objects.filter(project_name=project)[0:1]
+            if img[0] in image2 :
+                continue
+            image2.append(img[0])
+            print(img)
         context = {
             'l_projects':projects,
             'tag_projects':arr,
@@ -256,3 +283,14 @@ def search(request):
         }
     return render(request,'projectfund/search.html',context)
 
+def cal_denitions(request,id):
+    account1 = User.objects.get(username=request.user)
+    account = Account.objects.get(email=account1.email)
+    caldonitions = Donation.objects.filter(acc=account)
+    total = 0
+    for i in caldonitions:
+        total += int(i.donation_account_project)
+    print(total)
+    messages.error(request, total)
+    return redirect('projectfund:detail_project', id=id)
+    # return redirect('account:view_projects', id=account.id)

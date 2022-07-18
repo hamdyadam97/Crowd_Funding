@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project, ProjectImage, ProjectTag,Comment,Rate
+from .models import Project, ProjectImage, ProjectTag,Comment,Rate,Donation
 # Register your models here.
 
 
@@ -8,7 +8,7 @@ admin.site.register(ProjectImage)
 admin.site.register(ProjectTag)
 
 admin.site.register(Rate)
-
+admin.site.register(Donation)
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):

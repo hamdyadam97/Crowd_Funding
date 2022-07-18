@@ -37,7 +37,7 @@ class Account(models.Model):
     mobile_phone = models.CharField(null=False, blank=False, max_length=11)
     image = models.ImageField(upload_to='accounts', null=False, blank=False)
     is_active = models.BooleanField(default=False)
-    token = models.CharField(default=None,max_length=200)
+    token = models.CharField(null=True,max_length=200)
 
     def __str__(self):
         return self.firstname + " " + self.lastname

@@ -72,3 +72,15 @@ class Rate(models.Model):
     rating = models.CharField(max_length=20,choices=RATING_CHOICES)
     active = models.BooleanField(default=False)
 
+    def __str__(self):
+        return format(self.ratee)
+
+
+class Donation(models.Model):
+    pro = models.ForeignKey(Project,on_delete=models.CASCADE)
+    acc = models.ForeignKey(Account,on_delete=models.CASCADE)
+    donation_account_project = models.CharField(max_length=20,default=0)
+
+    def __str__(self):
+        return format(self.pro)
+
