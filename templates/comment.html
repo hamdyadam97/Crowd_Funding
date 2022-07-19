@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+<<<<<<< HEAD
+...
+<form method="post" style="margin-top: 1.3em;">
+          {{ comment_form | crispy }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+    <button type="submit" name="report_id" value="{{ project.id }}" class="btn btn-primary btn-sm"> report </button>
+ </form>
+=======
 {%load static%}
 {% block content %}
 
@@ -45,3 +54,4 @@
 {%block name%}
 {{request.session.email}}
 {%endblock%}
+>>>>>>> 8950fb4b33c0b360a0389888c52a05b7369d91a2

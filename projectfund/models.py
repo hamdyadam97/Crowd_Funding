@@ -7,7 +7,7 @@ Choice = [
     ('Michael','Michael'),
     ('education','education'),
     ('Corona','Corona'),
-    ('hayaat karima','hayaat karima'),
+    ('EMERGENCY','EMERGENCY'),
 ]
 
 
@@ -21,6 +21,7 @@ class Project(models.Model):
     end_date = models.DateField()
     donations = models.CharField(max_length=20, default=0)
     is_admin = models.BooleanField(default=False)
+    report = models.ManyToManyField(Account,related_name='project_report')
 
 
     def __str__(self):
@@ -51,6 +52,7 @@ class Comment(models.Model):
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=False)
+    report = models.ManyToManyField(Account,related_name='c_project_report')
 
     class Meta:
         ordering = ['created_on']
