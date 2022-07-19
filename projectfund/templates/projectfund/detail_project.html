@@ -1,59 +1,97 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="container">
-    <ul>
-        <span>title</span>
-        <li><h1>{{ project.title }}</h1></li>
-        <span>details</span>
-        <li><h5>{{ project.details }}</h5></li>
-        <span>start_date</span>
-        <li><h4>{{project.start_date}}</h4></li>
-        <span>end_date</span>
-        <li><h4>{{project.end_date}}</h4></li>
-        <span>category</span>
-        <li><h4>{{project.category}}</h4></li>
-        <span>total_target</span>
-        <li><h4>{{project.total_target}}</h4></li>
-        <span>donations</span>
-        <li><h4>{{project.donations}}</h4></li>
 
-</ul>
-    <a href="{% url 'projectfund:project_tag' project.id %}">search by mathch tag</a>
-        {% for img in image %}
-        <img src="{{img.image.url}}"style="width:350px;padding:50px">
-        {% endfor %}
-    <p>the rete for this project is <h3>{{avrg_rate}}</h3></p>
+<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+          <div class="container">
+              <h1 style="color :#f5a425; text-align: center; ">{{ project.title }}</h1>
+                <h5 style="  text-align: center;">{{ project.details }}</h5>
+                {% for img in image %}
+                     <img src="{{img.image.url}}" width="100%"  class="img-circle mx-auto mb-3"><br>
+                {% endfor %}
+              <span style="  padding-left: 50px;">From</span>
+              <span style="  padding-left: 50px;">{{project.start_date}}</span>
+              <span style="  padding-left: 50px;"> To </span>
+              <span style="  padding-left: 50px;">{{project.end_date}}</span>
+              <br>
+              <br>
+     <a href="#" class="">
+                 <i class="bi bi-cloud-check"></i> {{project.category}}
+                </a>
+               <span style="color: lightseagreen;
+    padding: inherit;"> | </span>
+               <a href="#" class="">
+                <i class="bi bi-star-fill"></i> {{avrg_rate}}
+                </a>
+                  <br>
+              <br>
+
+              <span style="  padding-left: 150px;color: gold;
+    font-size: x-large;">${{project.donations}}</span>
+              <span style=" " > Collected From </span>
+              <span style=" font-size: x-large;   color: gray; ">${{project.total_target}}</span>
+     <br>
         <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                     {{ form | crispy }}
-            <button type="submit" > addDonations </button>
+            <button type="submit" class ='btn btn-primary  btn-lg'> AddDonations </button>
+                    <button type="submit" name="report_id" value="{{ project.id }}" class="btn btn-danger btn-sm"> Report  this Project </button>
+
         </form>
+              <br>
+<div>
+    <label for="comments" class="form-label">comments</label>
+     {% for comm in comment %}
+    <span class="form-control" id="comments">
         {{msg}}
-    {% for comm in comment %}
-    <h5>{{comm.body}}</h5>
-    {% endfor %}
-    <a href="{% url 'projectfund:addcomment' project.id %}"> comment for projects</a>
-    <a href="{% url 'projectfund:rateproject' project.id %}"> rate projects</a>
-    <a href="{% url 'projectfund:cancel' project.id %}"> cansel projects</a>
-    <a href="{% url 'projectfund:cal_denitions' project.id  %}"> cal_denitions projects</a>
+   {{comm.body}}
+        </span>
+        <button type="submit" name="c_project_report" value="{{ project.id }}" class="btn btn-danger btn-sm"> Report </button>
+      <br>
+      {% endfor %}
+    </div>
+                    <br>
+
+              <div class="main-button">
+                  <div class="scroll-to-section"><a href="{% url 'projectfund:project_tag' project.id %}" style="">Search by match tagName</a></div>
+              </div>
+                    <br>
+
+              <div class="main-button">
+                  <div class="scroll-to-section">    <a href="{% url 'projectfund:project_detail' project.id %}"  style=""> Add Your comment </a>
 </div>
+              </div>
+                    <br>
+                  <div class="main-button">
+                  <div class="scroll-to-section">      <a href="{% url 'projectfund:rateproject' project.id %}"style=""> Rate This Projects</a>
+</div>
+              </div>
+                    <br>
+              <div class="main-button">
+                  <div class="scroll-to-section">        <a href="{% url 'projectfund:cancel' project.id %}"style=""> Cancel Projects</a>
+
+</div>
+              </div>
+                    <br>
+              <div class="main-button">
+                  <div class="scroll-to-section">        <a href="{% url 'projectfund:cal_denitions' project.id  %}"style=""> cal_denitions projects</a>
+
+</div>
+              </div>
+                    <br>
+</div>
+                </div>
+                </div>
+            </div>
+        </div>
 {% if messages %}
 {% for ms in messages %}
 <h1>{{ms }}</h1>
 {% endfor %}
-<<<<<<< HEAD
-{% for img in image %}
-<img src="{{img.image.url}}"style="width:350px;padding:50px">
-{% endfor %}
-<form action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-            {{ form | crispy }}
-    <button type="submit" > addDonations </button>
-    <button type="submit" name="c-report_id" value="{{ project.id }}" class="btn btn-primary btn-sm"> report </button>
-</form>
-{{msg}}
-=======
 {% endif %}
->>>>>>> 8950fb4b33c0b360a0389888c52a05b7369d91a2
-{% endblock %}
+
+
+ {% endblock content %}

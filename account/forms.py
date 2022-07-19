@@ -49,7 +49,6 @@ class UpdateUserForm(forms.ModelForm):
 
 
 class CreateProfile(forms.ModelForm):
-    birthdate = forms.CharField(widget=forms.SelectDateWidget,)
     class Meta:
         model = Profile
         fields = ['birthdate', 'facebook', 'country']

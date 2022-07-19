@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
-
 {% block title %}Profile Page{% endblock title %}
-
 {% block viewprojects %}
  <li><a href="{%url 'account:view_projects' account.id %}"> My Project </a></li>
 {% endblock viewprojects %}
@@ -54,35 +52,6 @@
 
 
 
-
-
-
-<!--
-<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
-        <div class="wrapper wrapper--w680">
-            <div class="card card-4">
-                <div class="card-body">
-
-
-        <h4><i class="bi bi-award"></i>WELCOM {{account.firstname}} {{account.lastname}}</h4>
-        <div class="content-hide">
-                <p>This is the profile page for {{account.firstname}} {{account.lastname}}</p>
-               <img src="/media/{{ account.image }}" width="40%" style="position-left:50%">
-                <p class="hidden-sm">This is the profile page for {{account.email}}</p><br>
-             <a href="{%url 'account:view_projects' account.id %}">Go To Projects</a>
-
-        </div>
-    </div>
-                <p>This is the profile page for {{account.firstname}}</p>
-                <p>This is the profile page for {{account.lastname}}</p>
-                <p>This is the profile page for {{account.email}}</p>
-                <a href="{%url 'account:view_projects' account.id %}" style="color: blue">Go To Projects </a>
-
-        	</div>
-                </div>
-            </div>
-        </div>
--->
 
 {% endblock %}
 
