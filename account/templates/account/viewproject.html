@@ -42,7 +42,7 @@
                  {% for i in account %}
         <p>This is the {{i.title}} Project</p>
         <p>This is the details :{{i.details}}</p>
-        <a href="{% url 'projectfund:project_detail' i.id %} " style="color: blue">Add comment to Project</a>
+        <a href="{% url 'projectfund:detail_project' i.id %} " style="color: blue">Add comment to Project</a>
           {% endfor %}
 
         	</div>

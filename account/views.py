@@ -1,9 +1,6 @@
 from django.contrib.auth import authenticate, login as authlogin ,logout  as authlogout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib import messages
-from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from .models import Account
@@ -69,7 +66,7 @@ def verify(request,token):
 def signin(request):
     if (request.session.get('email') is None):
             if (request.method=='GET'):
-                return render(request,'account/login.html')
+                return render(request,'account/log-in.html')
             else:
                 User = Account.objects.filter(email=request.POST['email'],password=request.POST['password'])
                 if len(User)>0 and User is not None:
