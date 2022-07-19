@@ -9,6 +9,7 @@
           <div class="container">
               <h1 style="color :#f5a425; text-align: center; ">{{ project.title }}</h1>
                 <h5 style="  text-align: center;">{{ project.details }}</h5>
+
                 {% for img in image %}
                      <img src="{{img.image.url}}" width="100%"  class="img-circle mx-auto mb-3"><br>
                 {% endfor %}
@@ -39,6 +40,8 @@
                     {{ form | crispy }}
             <button type="submit" class ='btn btn-primary  btn-lg'> AddDonations </button>
                     <button type="submit" name="report_id" value="{{ project.id }}" class="btn btn-danger btn-sm"> Report  this Project </button>
+            <br>
+            <span style="color : red;     font-size: xx-large;;">{{msg}}</span>
 
         </form>
               <br>
@@ -46,7 +49,7 @@
     <label for="comments" class="form-label">comments</label>
      {% for comm in comment %}
     <span class="form-control" id="comments">
-        {{msg}}
+
    {{comm.body}}
         </span>
         <button type="submit" name="c_project_report" value="{{ project.id }}" class="btn btn-danger btn-sm"> Report </button>
@@ -56,28 +59,32 @@
                     <br>
 
               <div class="main-button">
-                  <div class="scroll-to-section"><a href="{% url 'projectfund:project_tag' project.id %}" style="">Search by match tagName</a></div>
+                  <div >
+                                        <a href="{% url 'projectfund:project_detail' project.id %}"  style=""> Add Your comment </a>
+<a href="{% url 'projectfund:rateproject' project.id %}"style=""> Rate This Projects</a>
               </div>
                     <br>
 
-              <div class="main-button">
-                  <div class="scroll-to-section">    <a href="{% url 'projectfund:project_detail' project.id %}"  style=""> Add Your comment </a>
-</div>
-              </div>
-                    <br>
                   <div class="main-button">
-                  <div class="scroll-to-section">      <a href="{% url 'projectfund:rateproject' project.id %}"style=""> Rate This Projects</a>
+                      <a href="{% url 'projectfund:project_tag' project.id %}" style="">Search by match tagName</a>
+                  <div class="scroll-to-section">
 </div>
               </div>
                     <br>
               <div class="main-button">
-                  <div class="scroll-to-section">        <a href="{% url 'projectfund:cancel' project.id %}"style=""> Cancel Projects</a>
+                  <div >        <a href="{% url 'projectfund:cancel' project.id %}"style=""> Cancel Projects</a>
+                      <a href="{% url 'projectfund:cal_denitions' project.id  %}"style=""> My Denitions In This Projects</a>
+                      <br>
+                      {% if messages %}
+{% for ms in messages %}
+                                  <span style="color : red;     font-size: xx-large;;">{{ms }}</span>
+
+{% endfor %}
+{% endif %}
 
 </div>
               </div>
-                    <br>
-              <div class="main-button">
-                  <div class="scroll-to-section">        <a href="{% url 'projectfund:cal_denitions' project.id  %}"style=""> cal_denitions projects</a>
+
 
 </div>
               </div>
@@ -87,11 +94,5 @@
                 </div>
             </div>
         </div>
-{% if messages %}
-{% for ms in messages %}
-<h1>{{ms }}</h1>
-{% endfor %}
-{% endif %}
-
 
  {% endblock content %}

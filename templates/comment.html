@@ -1,28 +1,9 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-<<<<<<< HEAD
-...
-<form method="post" style="margin-top: 1.3em;">
-          {{ comment_form | crispy }}
-          {% csrf_token %}
-          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
-    <button type="submit" name="report_id" value="{{ project.id }}" class="btn btn-primary btn-sm"> report </button>
- </form>
-=======
+
+
 {%load static%}
 {% block content %}
-
-   <link href="{%static 'vendorl/mdi-font/css/material-design-iconic-font.min.css'%}" rel="stylesheet" media="all">
-    <link href="{%static 'vendorl/font-awesome-4.7/css/font-awesome.min.css'%}" rel="stylesheet" media="all">
-    <!-- Font special for pages-->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Vendor CSS-->
-    <link href="{%static 'vendorl/select2/select2.min.css'%}" rel="stylesheet" media="all">
-    <link href="{%static 'vendorl/datepicker/daterangepicker.css'%}" rel="stylesheet" media="all">
-
-    <!-- Main CSS-->
-    <link href="{%static 'css/main.css'%}" rel="stylesheet" media="all">
 
 <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
@@ -38,15 +19,6 @@
             </div>
         </div>
 </div>
-    <!-- Jquery JS-->
-    <script src="{%static 'vendorl/jquery/jquery.min.js'%}"></script>
-    <!-- Vendor JS-->
-    <script src="{%static 'vendorl/select2/select2.min.js'%}"></script>
-    <script src="{%static 'vendorl/datepicker/moment.min.js'%}"></script>
-    <script src="{%static 'vendorl/datepicker/daterangepicker.js'%}"></script>
-
-    <!-- Main JS-->
-    <script src="{%static 'js/global.js'%}"></script>
 
 {% endblock %}
 {% block header %}

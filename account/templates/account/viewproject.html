@@ -1,79 +1,29 @@
 {% extends 'base.html' %}
+
 {% block title %}Profile Page{% endblock title %}
+{% block showdata %}
+    <div class="row my-3 p-3">
+           {% for i in account %}
+
+        <h4><i class="bi bi-award"></i> {{i.title}}</h4>
+            <div class="content-hide">
+                <p>details of project:<br> {{i.details}}</p>
+               <a href="{% url 'projectfund:detail_project' i.id %}">Add comment</a>
+
+        </div>
+
+
+
+          {% endfor %}
+	</div>
+
+{% endblock showdata %}
+
 {% load crispy_forms_tags %}
 {%load static%}
 {% block content %}
 
-<!--<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">-->
-<!--        <div class="wrapper wrapper&#45;&#45;w680">-->
-<!--            <div class="card card-4">-->
-<!--                <div class="card-body">-->
-<!--                 {% for i in account %}-->
-<!--        <p>This is the {{i.title}} Project</p>-->
-<!--        <p>This is the details :{{i.details}}</p>-->
-<!--        <a href="{% url 'projectfund:project_detail' i.id %} " style="color: blue">Add comment to Project</a>-->
-<!--          {% endfor %}-->
 
-<!--        	</div>-->
-<!--                </div>-->
-<!--        </div>-->
-<!--</div>-->
-<section class="section courses" data-section="section4">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-heading">
-            <h2 class="main-title">last projects</h2>
-          </div>
-        </div>
-        <div class="owl-carousel owl-theme">
-          {% for project in l_projects %}
-          <div class="item">
-            {% for img in image %}
-            {% if img.project_name == project %}
-            <img src="{{ img.image.url }}" alt="Course #1">
-            {% endif %}
-            {% endfor %}
-            <div class="down-content">
-              <h4>{{project.title }}</h4>
-              <p>{{project.details}}</p>
-              <div class="author-image">
-                <img src="{%static 'assets/images/author-01.png'%}" alt="Author 1">
-              </div>
-              <div class="text-button-pay">
-                 <a href="{% url 'projectfund:detail_project' project.id %} ">read more <i class="fa fa-angle-double-right"></i></a>
-              </div>
-            </div>
-          </div>
-          {% endfor%}
-        </div>
-      </div>
-    </div>
-  </section>
-<!--
-<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
-<section class="main-content">
-		<div class="container">
-			<h1 class="text-center" style="color: chocolate;">WELCOM TO Your Projects</h1>
-			<br>
-			<br>
-
-			<div class="row">
-				<div class="col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-					<div class="profile-card card rounded-lg shadow p-4 p-xl-5 mb-4 text-center position-relative overflow-hidden">
-						<div class="banner"></div>
-						<h3 class="mb-4">Your project Info</h3>
-						<div class="text-left mb-4">
-							  {% for i in account %}
-                                <p>This is the {{i.title}} Project</p>
-                                <p>This is the details :{{i.details}}</p>
-                                <a href="{% url 'projectfund:project_detail' i.id %} " style="color: blue">Add comment</a>
-
-                                  {% endfor %}
-						</div>
-
-<<<<<<< HEAD
-=======
 <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
@@ -81,25 +31,18 @@
                  {% for i in account %}
         <p>This is the {{i.title}} Project</p>
         <p>This is the details :{{i.details}}</p>
-        <a href="{% url 'projectfund:detail_project' i.id %} " style="color: blue">Add comment to Project</a>
+        <a href="{% url 'projectfund:project_detail' i.id %} " style="color: blue">Add comment to Project</a>
           {% endfor %}
->>>>>>> 9bc6ee6eb00076690f45b42fbe931a6587aaa4c0
+
+        	</div>
+                </div>
+            </div>
+        </div>
 
 
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</section>
-
-</div>
--->
 {% endblock %}
 {% block header %}
 {% endblock %}
 {%block name%}
 {{request.session.email}}
 {%endblock%}
-

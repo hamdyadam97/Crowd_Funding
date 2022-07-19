@@ -1,13 +1,27 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
+
+
 {{arr}}
 <h1>{{arr.count}}</h1>
 {% for img in arr %}
 {% for s in img %}
+<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+
 {{img.count}}
 <img src="{{s.image.url}}"style="width:350px;padding:50px">
 {{s.project_name}}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 {% endfor %}
 {% endfor %}
 {% endblock %}

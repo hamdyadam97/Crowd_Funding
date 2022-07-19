@@ -13,7 +13,7 @@ from .forms import *
 
 
 def fund(request):
-    return render(request, 'base.html',)
+    return render(request, 'projectfund/home.html',)
 
 def list_project(request):
     projects = Project.objects.all()
@@ -39,7 +39,7 @@ def detail_project(request, id):
     datetoday = datetime.now().date()
     min = int(project.total_target) * 0.25
     if request.method == "POST":
-        if project.start_date == datetoday and float(project.donations) < min:
+        if project.end_date == datetoday and float(project.donations) < min:
             print('cancel project')
             project.delete()
             return render(request, 'base.html')
@@ -57,7 +57,7 @@ def detail_project(request, id):
                  Donation.objects.create(pro=project,acc=account,donation_account_project=request.POST['donations'])
         else:
             form = FormDonate()
-            msg = "total_target is close"
+            msg = "Total Target Is Close"
 
     else:
         form = FormDonate()
@@ -83,7 +83,7 @@ def cancleProject(request,id):
     if project.creator_id == account.id and int(project.donations) < min:
         project.delete()
     else:
-        messages.error(request,'you can;t delete yhis')
+        messages.error(request,'You Cant Delete This Project ')
         return redirect('projectfund:detail_project', id=id)
     return redirect('account:view_projects',id=account.id)
 
@@ -186,6 +186,7 @@ def project_detail(request, id):
             new_comment.proj = post
             # Save the comment to the database
             new_comment.save()
+            return redirect('projectfund:detail_project',id=id)
     else:
         comment_form = CommentForm()
 
@@ -210,10 +211,6 @@ def add_rate(request,id):
                                             'new_ratee': new_ratee,
                                             'rate_form': rate_form})
 
-    # context = {}
-    # context['form'] = form_rate()
-    # return render( request, "rate.html", context)
-
 
 def avrg(request):
         total=0
@@ -228,13 +225,6 @@ def avrg(request):
         return render(request, 'avreg.html', context)
 
 
-# def avrg(request):
-#      total=0
-#      my_str = ''.join(''.join(tup) for tup in RATING_CHOICES)
-#      total =total + int(my_str)
-#      rate_count = Rate.objects.Count('rating')
-#      avrg_rate = total/rate_cunt
-#      return (avrg_rate)
 
 def home(request):
     return render(request, 'projectfund/home.html', {})
