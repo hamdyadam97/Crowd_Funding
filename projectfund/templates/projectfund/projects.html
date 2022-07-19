@@ -1,14 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
-{% for project in projects %}
-<div class="container">
-    <div class="">
-        <h1>{{ project.title }}</h1>
-        <p> the start daate for this project <span>{{project.start_date}}</span> and the end is  <span>{{project.end_date}}</span> </p>
-        <p><a href="#"> {{project.category}} </a></p>
-        <a href="{% url 'projectfund:detail_project' project.id %}">for more details projects and denote</a>
-    </div>
+{%load static%}
 
-</div>
-{% endfor%}
+ <section class="section courses" data-section="section1">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2 class="main-title">All projects</h2>
+          </div>
+        </div>
+        <div class="owl-carousel owl-theme">
+                        {% for project in projects %}
+          <div class="item">
+            <img src="{%static 'assets/images/courses-01.jpg'%}" alt="">
+            <div class="down-content">
+                           <h1>{{ project.title }}</h1>
+                     <p> the start daate for this project <span>{{project.start_date}}</span> and the end is  <span>{{project.end_date}}</span> </p>
+<p><a href="#"> {{project.category}} </a></p>
+              <div class="author-image">
+                <img src="{%static 'assets/images/author-01.png'%}" alt="">
+              </div>
+              <div class="text-button-pay">
+                        <a href="{% url 'projectfund:detail_project' project.id %}">View More</a>
+              </div>
+            </div>
+
+          </div>
+            {% endfor%}
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
 {% endblock %}

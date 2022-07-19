@@ -37,7 +37,10 @@
   width: -moz-calc((100% - 30px) / 2);
   width: calc((100% - 30px) / 2);
 }
-
+#formFund {
+display: inline;
+width: 50%;
+}
 @media (max-width: 767px) {
   .col-2 {
     width: 100%;

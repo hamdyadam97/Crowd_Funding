@@ -2,6 +2,75 @@
 {% load static %}
 {% load projectfund_tags %}
 {% block content %}
+ <!-- ***** Main Banner Area Start ***** -->
+  <section class="section main-banner" id="top" data-section="section1">
+      <video autoplay muted loop id="bg-video">
+          <source src="{%static 'assets/images/course-video.mp4'%}" type="video/mp4" />
+      </video>
+
+      <div class="video-overlay header-text">
+          <div class="caption">
+              <h6>Your Home For Help</h6>
+              <h2><em>Make Your Dreams </em>Come True</h2>
+              <div class="main-button">
+                  <div class="scroll-to-section"><a href="#section2"> Start a Fund.exe</a></div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- ***** Main Banner Area End ***** -->
+
+     <!-- start header -->
+
+  <section class="features">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-12">
+          <div class="features-post">
+            <div class="features-content">
+              <div class="content-show">
+                <h4><i class="bi bi-stars"></i>Top Rated</h4>
+              </div>
+              <div class="content-hide">
+                <p>Discover the most famous financing projects that have the support of people and rated among the best projects on the site</p>
+                <p class="hidden-sm">Discover the most famous financing projects that have the support of people and rated among the best projects on the site</p>
+                <div class="scroll-to-section"><a href="#">Show More </a></div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-12">
+          <div class="features-post second-features">
+            <div class="features-content">
+              <div class="content-show">
+                <h4><i class="bi bi-calendar-check-fill"></i>Latest Projects</h4>
+              </div>
+              <div class="content-hide">
+                <p>Discover the latest financing projects and hurry up to donate and contribute to the project you want</p>
+                <p class="hidden-sm">Discover the latest financing projects and hurry up to donate .</p>
+                <div class="scroll-to-section"><a href="#">Details</a></div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-12">
+          <div class="features-post third-features">
+            <div class="features-content">
+              <div class="content-show">
+                <h4><i class="bi bi-award"></i>Featured Projects</h4>
+              </div>
+              <div class="content-hide">
+                <p>Funding helps you find benefits for your money by financing projects for distinguished people. Here is a list of the most recommended projects specifically for you.</p>
+                <p class="hidden-sm">Funding helps you find benefits for your money by financing projects for distinguished people. Here is a list of the most recommended projects specifically for you.</p>
+                <div class="scroll-to-section"><a href="#">Show More</a></div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+       <!-- End header-->
 {% last_projects %}
 {% the_highest_five_rated %}
 {% featured_projects %}

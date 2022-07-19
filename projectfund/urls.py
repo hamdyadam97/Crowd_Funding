@@ -17,7 +17,7 @@ urlpatterns = [
     path('rate/<id>',add_rate),
     path('avrg',avrg),
     path('allproject/<str:category>', sameproject),
-    path('comment/<id>',project_detail,name='addcomment'),
+    path('comment/<id>',project_detail,name='project_detail'),
     path('rate/<id>',add_rate,name='rateproject'),
     path('avrg',avrg,name='avrg'),
     path('home',home,name='home'),

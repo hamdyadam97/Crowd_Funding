@@ -1,60 +1,69 @@
 {% extends 'base.html' %}
-<<<<<<< HEAD
 
 {% block title %}Profile Page{% endblock title %}
 
 {% block viewprojects %}
-
- <li><a href="{%url 'account:view_projects' account.id %}">AllProject </a></li>
+ <li><a href="{%url 'account:view_projects' account.id %}"> My Project </a></li>
 {% endblock viewprojects %}
 {% block forprofile %}
   <li class="has-submenu"><a href="#section2">For Profile</a>
           <ul class="sub-menu">
-
             <li><a href="{%url 'account:updateuser' account.id %}">Edit Profile</a></li>
             <li><a href="{%url 'account:addprofile' account.id %}">Add profileInfo</a></li>
             <li><a href="{%url 'account:deletepage' account.id %}">DELETE ACCOUNT</a></li>
           </ul>
         </li>
 {% endblock forprofile %}
-{% block category %}
-     <li class="has-submenu"><a href="#section2">Categories</a>
-          <ul class="sub-menu">
+{% block search %}{% endblock search %}
+{% load crispy_forms_tags %}
+{%load static%}
+{% block content %}
+<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+<section class="main-content">
+		<div class="container">
+			<h1 class="text-center" style="color: chocolate;">WELCOM {{account.firstname}} {{account.lastname}}</h1>
+			<br>
+			<br>
 
-            <li><a href="/projects/allproject/hospital">Hospital</a></li><br>
-            <li><a href="/projects/allproject/hayaat-karima">Hayaa Karima</a></li>
-            <li><a href="/projects/allproject/Michael">Michael</a></li>
-            <li><a href="/projects/allproject/education">Education</a></li>
-            <li><a href="/projects/allproject/Corona">Corona</a></li>
+			<div class="row">
+				<div class="col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+					<div class="profile-card card rounded-lg shadow p-4 p-xl-5 mb-4 text-center position-relative overflow-hidden">
+						<div class="banner"></div>
+						<img src="{{ account.image.url }}"  width="40%" alt="" class="img-circle mx-auto mb-3">
+						<h3 class="mb-4">Your Info</h3>
+						<div class="text-left mb-4">
+							<p class="mb-2"><i class="fa fa-envelope mr-2"></i> {{account.email}} </p>
+							<p class="mb-2"><i class="fa fa-phone mr-2"></i> {{account.mobile_phone}}</p>
 
-          </ul>
-        </li>
-    {% endblock category %}
+						</div>
+						<div class="social-links d-flex justify-content-center">
+							<div class="main-button">
+                  <div class=""> <a href="{%url 'account:view_projects' account.id %}">Go To Projects</a></div>
+              </div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+</div>
 
 
 
 
 
-{% block hidden1 %}
- <div class="col-lg-4 col-12" style="overflow:hidden">
- </div>
-{% endblock hidden1 %}
-{% block hidden2 %}
- <div class="col-lg-4 col-12" style="overflow:hidden">
- </div>
-{% endblock hidden2 %}
 
 
-{% block showdata %}
-    <div class="row my-3 p-3">
-<<<<<<< HEAD
-        <p>This is the profile page for {{account.firstname}}</p>
-        <p>This is the profile page for {{account.lastname}}</p>
-        <p>This is the profile page for {{account.email}}</p>
-	</div>
+<!--
+<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
 
-{% endblock content %}
-=======
+
         <h4><i class="bi bi-award"></i>WELCOM {{account.firstname}} {{account.lastname}}</h4>
         <div class="content-hide">
                 <p>This is the profile page for {{account.firstname}} {{account.lastname}}</p>
@@ -64,28 +73,6 @@
 
         </div>
     </div>
-{% endblock showdata %}
-=======
-{% load crispy_forms_tags %}
-{%load static%}
-{% block content %}
-
-   <link href="{%static 'vendorl/mdi-font/css/material-design-iconic-font.min.css'%}" rel="stylesheet" media="all">
-    <link href="{%static 'vendorl/font-awesome-4.7/css/font-awesome.min.css'%}" rel="stylesheet" media="all">
-    <!-- Font special for pages-->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Vendor CSS-->
-    <link href="{%static 'vendorl/select2/select2.min.css'%}" rel="stylesheet" media="all">
-    <link href="{%static 'vendorl/datepicker/daterangepicker.css'%}" rel="stylesheet" media="all">
-
-    <!-- Main CSS-->
-    <link href="{%static 'css/main.css'%}" rel="stylesheet" media="all">
-
-<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
-        <div class="wrapper wrapper--w680">
-            <div class="card card-4">
-                <div class="card-body">
                 <p>This is the profile page for {{account.firstname}}</p>
                 <p>This is the profile page for {{account.lastname}}</p>
                 <p>This is the profile page for {{account.email}}</p>
@@ -95,23 +82,11 @@
                 </div>
             </div>
         </div>
+-->
 
-    <!-- Jquery JS-->
-    <script src="{%static 'vendorl/jquery/jquery.min.js'%}"></script>
-    <!-- Vendor JS-->
-    <script src="{%static 'vendorl/select2/select2.min.js'%}"></script>
-    <script src="{%static 'vendorl/datepicker/moment.min.js'%}"></script>
-    <script src="{%static 'vendorl/datepicker/daterangepicker.js'%}"></script>
+{% endblock %}
 
-    <!-- Main JS-->
-    <script src="{%static 'js/global.js'%}"></script>
-{% endblock %}
-{% block header %}
-{% endblock %}
 {%block name%}
 {{request.session.email}}
 {%endblock%}
 
->>>>>>> 8c5e0a025c5f803638d7c096ac9602ca5aaf0be4
-
->>>>>>> 8950fb4b33c0b360a0389888c52a05b7369d91a2

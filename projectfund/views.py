@@ -12,7 +12,8 @@ from django.shortcuts import render, get_object_or_404
 from .forms import *
 
 
-
+def fund(request):
+    return render(request, 'base.html',)
 
 def list_project(request):
     projects = Project.objects.all()
